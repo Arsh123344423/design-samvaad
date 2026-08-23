@@ -112,8 +112,19 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 700;
-  /* Bound by width AND height so the scene keeps its proportions */
-  font-size: clamp(2.9rem, min(11.5vw, 17.5vh), 11.5rem);
+
+  /* The two words stay on one line at every width. The lockup measures
+     almost exactly 5x its own font-size across, so the room the hero has
+     is a hard ceiling on the type — 5.3 leaves margin for the fallback
+     face, which sets wider than Teko. This is a ceiling rather than a
+     clamp floor: a floor would win over it and push the title off the
+     edge of a small phone. */
+  --title-fit: calc((min(100vw, 1320px) - 2 * var(--gutter)) / 5.3);
+
+  /* Bound by width AND height so the scene keeps its proportions. The
+     floor is what sizes the title on a phone, where both the vw and vh
+     terms fall below it. */
+  font-size: min(var(--title-fit), clamp(3.9rem, min(11.5vw, 17.5vh), 11.5rem));
   line-height: .86;
   letter-spacing: .005em;
   text-align: center;
@@ -248,11 +259,19 @@
 
 @media (max-width: 760px) {
   :root { --nav-h: 3.5rem; }
-  /* Stack the two words */
-    .hero__title { font-size: clamp(2.8rem, 15vw, 5.4rem); }
-  .hero__title-line { display: block; }
-  .hero__title-line + .hero__title-line { margin-left: 0; margin-top: -.08em; }
-  .hero__meta { letter-spacing: .12em; }
+
+  /* line-height .86 crops the title's box: the glyphs overhang it by
+     about .29em top and bottom, so the eyebrow and the meta sit inside
+     that overhang and the three lines read cramped however generous the
+     margins look in the rules. Give the overhang back — here, where the
+     hero has 200px of height to spare. A desktop window at 800px tall
+     has none, which is why this is not in the base rule. */
+  .hero__title { margin-block: .29em; }
+
+  /* With the overhang compensated, the visible gap on each side is just
+     the neighbour's own margin — so these two match to sit the title
+     evenly between them. */
+  .hero__meta { margin-top: clamp(.9rem, 2.4vh, 2.2rem); letter-spacing: .12em; }
   .truck { width: min(104vw, 46vh); }
   .hero__tagline { font-size: clamp(1.3rem, 5.6vw, 1.9rem); }
   /* Full-width stacked CTAs */
@@ -279,7 +298,7 @@
    CTAs still land above the fold. */
 @media (max-height: 640px) {
   .hero__inner { padding-block: .8rem 1rem; }
-  .hero__title { font-size: clamp(2.1rem, 11vw, 3.4rem); }
+  .hero__title { font-size: min(var(--title-fit), clamp(2.1rem, 11vw, 3.4rem)); }
   .truck { width: min(86vw, 40vh); margin-top: 0; }
   .hero__sub { display: none; }
   .hero__tagline { font-size: clamp(1.05rem, 4.4vw, 1.5rem); }
