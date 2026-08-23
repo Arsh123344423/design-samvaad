@@ -38,16 +38,17 @@
 .scene__sky {
   position: absolute;
   inset: 0;
+  /* Blue holds the top half so the crossfade reads as one turn from
+     blue to pink, rather than as a run of separate bands. */
   background: linear-gradient(
     to bottom,
-    var(--sky-top)   0%,
-    var(--sky-deep)        15%,
-    var(--sky-blue) 31%,
-    var(--sky-mid)  45%,
-    var(--sky-violet)        56%,
-    var(--sky-magenta)        70%,
-    var(--glow)     84%,
-    color-mix(in oklab, var(--glow) 74%, var(--glow-warm)) 100%
+    var(--sky-top)       0%,
+    var(--sky-deep)     17%,
+    var(--sky-blue)     38%,
+    var(--sky-mid)      58%,
+    var(--sky-violet)   76%,
+    var(--sky-magenta)  86%,
+    var(--glow-warm)   100%
   );
 }
 
@@ -65,7 +66,7 @@
     color-mix(in oklab, var(--glow) 34%, transparent) 60%,
     transparent 76%);
   filter: blur(42px);
-  opacity: .62;
+  opacity: .5;   /* pink blooms hotter than the red this replaced */
 }
 
 /* Print-press grain — keeps it screen-printed, not vector-clean */
@@ -171,7 +172,9 @@
   margin: .6rem 0 0;
   font-size: clamp(.82rem, 1.15vw, .96rem);
   text-align: center;
-  color: color-mix(in oklab, var(--cream) 76%, transparent);
+  /* Sits in the pink band, the lightest ground on the page — it needs
+     more of the cream than the meta line does up in the blue. */
+  color: color-mix(in oklab, var(--cream) 90%, transparent);
 }
 
 .hero__cta {
@@ -245,7 +248,6 @@
 
 @media (max-width: 760px) {
   :root { --nav-h: 3.5rem; }
-  .brand__name { font-size: 1.18rem; }
   /* Stack the two words */
     .hero__title { font-size: clamp(2.8rem, 15vw, 5.4rem); }
   .hero__title-line { display: block; }

@@ -53,19 +53,75 @@
 
 .about__body strong { color: var(--ink); font-weight: 800; }
 
-/* Wide screens: bubbles float in the empty wall above the two women.
-   Positions are % of .dialogue__frame — the left woman sits at ~17% across,
-   the right at ~80%, so each bubble's tail lands over its speaker. */
-@media (min-width: 700px) {
+/* ---- The two women speak ----
+   The bubbles float over the painting at every width. The scene only
+   works if the words come out of the women, so each tail has to land on
+   its speaker; what changes with width is how the pair is arranged in
+   the empty wall above their heads.
+
+   That wall runs from the top of the painting to about 26% down, and the
+   women sit at ~16% and ~82% across. Positions are % of .dialogue__frame,
+   which measures exactly the painting. */
+
+/* Desktop: stacked and staggered, the way a conversation takes turns. The
+   wall is deep enough here to hold one bubble above the other with the
+   pair still reading as attached to the women below them. */
+@media (min-width: 900px) {
   .bubble {
     position: absolute;
     z-index: 2;
     max-width: 36%;
     margin: 0;
-    font-size: clamp(.82rem, 1.25vw, 1rem);
+    /* The frame is capped at 760px from here up, so the type has nothing
+       left to scale against — a vw clamp only made it shrink as the
+       window grew past the breakpoint. */
+    font-size: 1rem;
   }
   .bubble--them { top: 8%;  left: 17%; }   /* tail lands over the left woman  */
   .bubble--me   { top: 19%; right: 19%; }  /* tail lands over the right woman */
+}
+
+/* Below that, stacking pulls the pair away from the women. Two bubbles
+   at a readable size take more than half the frame's height while the
+   wall is only a quarter of it, so the stagger has to float them in the
+   middle of the wall with a gap under each tail — they stop reading as
+   speech and start reading as two labels.
+
+   Side by side fixes it: one bubble over each woman, both anchored by
+   their bottom edge so the tails stay level and land just above the
+   heads however many lines the text takes.
+
+   Neither bubble has a corner near its speaker in that arrangement, so
+   the tail moves along the bottom edge rather than hanging off it —
+   --tail is where the point sits, as a % of the bubble's own width. The
+   bubbles get a fixed width rather than a max so that % keeps aiming at
+   the same spot no matter how the text wraps. */
+@media (max-width: 899px) {
+  .bubble {
+    position: absolute;
+    z-index: 2;
+    bottom: 76%;
+    width: 45%;
+    max-width: none;
+    margin: 0;
+    padding: .5rem .8rem .55rem;
+    border-radius: 1.1rem;
+    font-size: clamp(.72rem, 3.1vw, 1rem);
+  }
+
+  .bubble--them { left: 3%;  --tail: 29%; }   /* points at the left woman  */
+  .bubble--me   { right: 3%; --tail: 67%; }   /* points at the right woman */
+
+  .bubble::after {
+    left: var(--tail);
+    right: auto;
+    bottom: -.4rem;
+    translate: -50% 0;
+    width: .8rem;
+    height: .5rem;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    border-radius: 0;
+  }
 }
 
 @media (max-width: 900px) {

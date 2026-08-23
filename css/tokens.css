@@ -29,15 +29,31 @@
   --ink-warm:     #FFF6E2;              /* hero tagline                      */
   --ink-flap:     #FFE9C7;              /* mudflap lettering                 */
 
-  /* ---------- Dusk scene (hero + footer share this sky) ---------- */
-  --sky-top:      #050C1E;
-  --sky-deep:     #08245F;
-  --sky-blue:     #0E43C4;
-  --sky-mid:      #2F4FD6;
-  --sky-violet:   #4756DC;
-  --sky-magenta:  #9B3C8E;
-  --glow:         var(--red);
-  --glow-warm:    #FF6A3D;
+  /* ---------- Dusk scene (the hero sky, and the page's own ground) ----------
+     Two colours, not a spectrum. The brand blue ramped down into ink at
+     the top, crossfading to the brand pink at the horizon — the violet
+     across the middle is the crossfade itself, not a third hue. Red used
+     to sit at the bottom and read as a colour of its own, which left the
+     hero spending most of the palette on one screen; it belongs to the
+     section heads and the milestone stones instead.
+
+     Blue and pink are also what the truck is painted in, so the artwork
+     now sits inside its own two colours. Every stop folds ink back in:
+     both parents are highly saturated, and mixed straight their midpoint
+     lands lighter than either end, which bleaches the middle of the sky. */
+  --violet:       color-mix(in oklab, var(--blue) 50%, var(--pink));
+
+  --sky-top:      color-mix(in oklab, var(--blue) 12%, var(--ink));
+  --sky-deep:     color-mix(in oklab, var(--blue) 38%, var(--ink));
+  --sky-blue:     color-mix(in oklab, var(--blue) 76%, var(--ink));
+  --sky-mid:      color-mix(in oklab, var(--violet) 78%, var(--ink));
+  --sky-violet:   color-mix(in oklab, var(--pink) 86%, var(--ink));
+  --sky-magenta:  var(--pink);
+  --glow:         var(--pink);
+  /* The horizon peaks at --sky-magenta and then settles, rather than
+     lifting toward cream: the CTAs and the sub-line sit in this band,
+     and cream type over a lifted pink stops holding. */
+  --glow-warm:    color-mix(in oklab, var(--pink) 84%, var(--ink));
   --glass-dark:   rgba(10, 22, 48, .42);   /* frosted pills on the hero      */
   --glass-nav:    rgba(6, 14, 38, .82);    /* mobile menu panel              */
   --glass-btn:    rgba(10, 18, 40, .6);    /* lightbox controls              */

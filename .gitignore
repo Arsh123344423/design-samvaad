@@ -1,11 +1,11 @@
 # ── Source artwork ──────────────────────────────────────────────
 # The site loads optimised derivatives, which ARE committed. These
-# originals are large (206 MB total) and one exceeds GitHub's 100 MB
-# file limit, so they stay local. See README → Assets for the
-# commands that regenerate the derivatives from them.
-Assets/Truck Hero.png
-Assets/truck.png
+# originals total ~93 MB — the truck alone is 49 MB — so they stay
+# local. See README → Assets for the commands that regenerate the
+# derivatives from them.
+Assets/Truck hero Image.png
 Assets/Sakhi Talks.jpg
+Assets/Navbar Logo.png
 Assets/DS Image*.png
 Speakers/DST*.png
 Gallery/*.png

@@ -30,6 +30,8 @@
 
 .dialogue__scene::after  { bottom: 0; transform: scaleY(-1); }
 
+/* Nothing but a positioning context — the bubbles are floated over the
+   painting at every width, and the About section places them. */
 .dialogue__frame {
   position: relative;
   width: min(100%, 760px);

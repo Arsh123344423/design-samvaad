@@ -40,13 +40,12 @@
 }
 
 .brand { display: inline-flex; align-items: center; gap: .6rem; margin-right: auto; }
-.brand__name {
-  font-family: var(--font-display);
-  font-size: 1.42rem;
-  font-weight: 700;
-  letter-spacing: .055em;
-  text-transform: uppercase;
-  line-height: 1;
+/* The lockup is a two-line stack, so it is sized off the bar's own height
+   rather than a fixed px value — it keeps its margin if --nav-h changes. */
+.brand__logo {
+  display: block;
+  height: calc(var(--nav-h) * .62);
+  width: auto;
 }
 
 .nav__links {

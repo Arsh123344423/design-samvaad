@@ -53,7 +53,7 @@ twice, it becomes a token.
 | Brand palette | `--green` `--red` `--pink` `--blue` `--yellow` `--cream` `--ink` |
 | Surfaces | `--surface-page` `--surface-raised` `--surface-asphalt` |
 | Ink | `--ink-on-dark` `--ink-on-light` `--ink-bright` |
-| Dusk scene | `--sky-top` `--sky-blue` `--glow` `--glow-warm` |
+| Dusk scene | `--sky-top` … `--sky-magenta` `--glow` `--glow-warm` — all mixed from the palette |
 | Radius | `--radius-sm` … `--radius-2xl` `--radius-pill` |
 | Elevation | `--shadow-card` `--shadow-poster` `--shadow-panel` |
 | Layout | `--nav-h` `--section-pad` `--gutter` `--measure-wide` `--measure-text` |
@@ -95,7 +95,7 @@ are toggled by JavaScript, never styled directly by it.
 | `section-head` | running head + dotted rule, from the deck's slides |
 | `truck` | hero truck, dissolve mask and scene-light tint |
 | `horn` | horn pill and the "पों पों!" burst |
-| `bubble` | chat bubbles with tails |
+| `bubble` | chat bubbles; the tail can be moved along the bottom edge with `--tail` |
 | `dialogue` | About scene — miniature + bubbles + truck-art bands |
 | `milestone` | Editions kilometre stones |
 | `road` | full-bleed asphalt with lane markings |
@@ -130,22 +130,43 @@ Source artwork is large; optimised derivatives are committed alongside.
 
 | Original | Serve | Note |
 |---|---|---|
-| `truck.png` (20 MB) | `truck-w1200/1600/2200.png` | responsive `srcset` |
-| — | `truck-mask.png` | 241 KB silhouette for the tint mask |
+| `Truck hero Image.png` (49 MB) | `truck-w1200/1600/2200.png` | responsive `srcset` |
+| ↳ same source | `truck-mask.png` | 263 KB silhouette for the tint mask |
 | `Sakhi Talks.jpg` | `sakhi-talks.jpg` | clean filename for URLs |
+| `Navbar Logo.png` | `navbar-logo.png` | clean filename for URLs |
 | `Speakers/DST*.png` (2.3 MB) | `Speakers/*.jpg` (~250 KB) | ~90% smaller |
 | `Gallery/*.png` (21 MB) | `Gallery/gallery-NN.jpg` (5.9 MB) | 72% smaller |
 
-**Source originals are not committed** — they total 206 MB and one
-exceeds GitHub's 100 MB file limit. They are listed in `.gitignore`;
-keep them in your own storage. Only the optimised files the site
-actually loads are in the repo (~8 MB).
+**Source originals are not committed** — they total ~93 MB, the truck
+alone being 49 MB. They are listed in `.gitignore`; keep them in your
+own storage. Only the optimised files the site actually loads are in
+the repo (~13 MB).
 
 Regenerate an optimised poster with:
 
 ```bash
 sips -s format jpeg -s formatOptions 82 -Z 1200 --out out.jpg in.png
 ```
+
+### Replacing the truck
+
+The hero needs four files from one source, so regenerate them together:
+
+```bash
+for W in 1200 1600 2200; do sips -s format png -Z $W --out "Assets/truck-w$W.png" "Assets/Truck hero Image.png"; done
+sips -s format png -Z 520 --out Assets/truck-mask.png "Assets/Truck hero Image.png"
+```
+
+`truck-mask.png` is just a small copy of the same artwork — a CSS
+`mask-image` reads the alpha channel, so the cut-out **is** the
+silhouette and nothing has to be traced by hand. Cutting it from the
+same source is also what keeps the scene-light tint registered against
+the truck; a mask from a different render would sit off by a few pixels.
+
+Then update `width`/`height` on the hero `<img>` in `index.html` to the
+new intrinsic size — `sips -g pixelWidth -g pixelHeight` on the 1600px
+file — or the reserved space will be the wrong shape and the page will
+shift as the image lands.
 
 **Paths in CSS are relative to the CSS file**, so component and section
 files reference `../../Assets/…`.
