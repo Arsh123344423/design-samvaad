@@ -1,7 +1,7 @@
 .speakers {
   background: var(--cream);
   color: var(--ink);
-  padding: 0 0 clamp(4rem, 10vh, 8rem);
+  padding: 0 0 clamp(1rem, 3vh, 2rem);
   scroll-margin-top: var(--nav-h);
 }
 
@@ -36,6 +36,7 @@
   width: 100%;
   aspect-ratio: 839 / 1200;
   object-fit: cover;
+  border-radius: .55rem;
 }
 
 /* ---- "More coming" tile, built to match the poster proportions ---- */

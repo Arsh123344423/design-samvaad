@@ -8,6 +8,7 @@ import { initNav }      from './modules/nav.js';
 import { initHorn }     from './modules/horn.js';
 import { initStickyNav } from './modules/sticky-nav.js';
 import { initLightbox }  from './modules/lightbox.js';
+import { initSpeakerCarousel } from './modules/speakers.js';
 
 initEntrance(document.body);
 
@@ -30,3 +31,5 @@ initLightbox({
   gallery: document.getElementById('gallery-grid'),
   dialog:  document.getElementById('lightbox'),
 });
+
+initSpeakerCarousel(document.querySelector('[data-speaker-carousel]'));
