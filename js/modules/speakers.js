@@ -26,11 +26,15 @@ export function initSpeakerCarousel(carousel) {
   previous.addEventListener('click', () => {
     center = (center - 1 + speakers.length) % speakers.length;
     render();
+    stopAutoAdvance();
+    startAutoAdvance();
   });
 
   next.addEventListener('click', () => {
     center = (center + 1) % speakers.length;
     render();
+    stopAutoAdvance();
+    startAutoAdvance();
   });
 
   const stopAutoAdvance = () => {
@@ -40,11 +44,17 @@ export function initSpeakerCarousel(carousel) {
 
   const startAutoAdvance = () => {
     stopAutoAdvance();
-    autoAdvance = setInterval(() => next.click(), 3000);
+    autoAdvance = setInterval(() => next.click(), 3500);
   };
 
-  carousel.addEventListener('mouseenter', stopAutoAdvance);
-  carousel.addEventListener('mouseleave', startAutoAdvance);
+  speakers.forEach((speaker) => {
+    speaker.addEventListener('mouseenter', () => {
+      if (speaker.dataset.pos === 'center') stopAutoAdvance();
+    });
+    speaker.addEventListener('mouseleave', () => {
+      if (speaker.dataset.pos === 'center') startAutoAdvance();
+    });
+  });
 
   render();
   startAutoAdvance();
