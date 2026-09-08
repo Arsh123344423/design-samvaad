@@ -2,36 +2,59 @@
   position: relative;
   width: 100%;
 }
-
 .speaker-grid {
   list-style: none;
   width: 100%;
   max-width: 72rem;
   margin: 0 auto;
   padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem);
-  min-height: clamp(24rem, 48vw, 36rem);
+  min-height: clamp(22rem, 43vw, 27rem);
   position: relative;
   overflow: hidden;
 }
-
+/* Card look (colour, mat, typography) comes from the
+   section-agnostic .speaker-card component — this layer only
+   handles the carousel's absolute positioning and motion. */
 .speaker {
   position: absolute;
   top: 50%;
   left: 50%;
   width: clamp(11rem, 29%, 19rem);
-  overflow: hidden;
   opacity: 0;
   pointer-events: none;
   transition: transform .6s var(--ease), opacity .6s var(--ease);
   transform: translate(-50%, -50%) scale(.86);
+}
+/* Name + role are part of the card, but only the centred speaker
+   is legible enough at this scale to carry text — side cards show
+   photo only, so the caption fades in with the card that owns it. */
+.speaker__name,
+.speaker__role {
+  opacity: 0;
+  transition: opacity .35s var(--ease);
+}
+.speaker:not([data-pos="center"]) .speaker__name,
+.speaker:not([data-pos="center"]) .speaker__role {
+  display: none;
 }
 
 /* JS sets data-pos on each <li>. These are the only positions that exist. */
 .speaker[data-pos="center"] {
   opacity: 1;
   pointer-events: auto;
+  margin-top: clamp(0.75rem, 2.25vw, 1.5rem);
   transform: translate(-50%, -50%) scale(1.06);
   z-index: 2;
+}
+.speaker[data-pos="center"] .speaker__photo {
+  border: 2px solid var(--speaker-tint, var(--red));
+}
+.speaker[data-pos="center"] .speaker__name,
+.speaker[data-pos="center"] .speaker__role {
+  opacity: 1;
+}
+.speaker[data-pos="center"] .speaker__photo::after {
+  opacity: .82;
 }
 .speaker[data-pos="right"] {
   opacity: .52;
@@ -45,20 +68,14 @@
 }
 .speaker[data-pos="far-right"] {
   opacity: 0;
+  visibility: hidden;
   transform: translate(160%, -50%) scale(.86);
 }
 .speaker[data-pos="far-left"] {
   opacity: 0;
+  visibility: hidden;
   transform: translate(-260%, -50%) scale(.86);
 }
-
-@media (hover: hover) {
-  .speaker[data-pos="center"]:hover {
-    transform: translate(-50%, -50%) scale(1.06) translateY(-6px);
-    box-shadow: var(--shadow-lifted);
-  }
-}
-
 /* Nav buttons */
 .speaker-nav {
   position: absolute;
@@ -80,7 +97,6 @@
 }
 .speaker-nav--prev { left: clamp(.25rem, 1.5vw, 1rem); }
 .speaker-nav--next { right: clamp(.25rem, 1.5vw, 1rem); }
-
 @media (max-width: 560px) {
   .speaker-grid { padding-inline: .5rem; }
   .speaker { width: min(72%, 15rem); }

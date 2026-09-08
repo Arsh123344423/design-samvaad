@@ -8,19 +8,22 @@ export function initSpeakerCarousel(carousel) {
 
   let center = 0;
   let autoAdvance;
+  let hoveredSpeaker = null;
 
   const render = () => {
     speakers.forEach((speaker, index) => {
       const offset = (index - center + speakers.length) % speakers.length;
-      const position = {
-        0: 'center',
-        1: 'right',
-        2: 'far-right',
-        [speakers.length - 1]: 'left',
-        [speakers.length - 2]: 'far-left',
-      }[offset] || 'far-right';
+      let position = 'far-right';
+
+      if (offset === 0) position = 'center';
+      else if (offset === 1) position = 'right';
+      else if (offset === speakers.length - 1) position = 'left';
+      else if (offset === speakers.length - 2) position = 'far-left';
+
       speaker.dataset.pos = position;
     });
+
+    if (hoveredSpeaker?.dataset.pos !== 'center') hoveredSpeaker = null;
   };
 
   previous.addEventListener('click', () => {
@@ -44,15 +47,21 @@ export function initSpeakerCarousel(carousel) {
 
   const startAutoAdvance = () => {
     stopAutoAdvance();
-    autoAdvance = setInterval(() => next.click(), 3500);
+    if (!hoveredSpeaker && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      autoAdvance = setInterval(() => next.click(), 3500);
+    }
   };
 
   speakers.forEach((speaker) => {
-    speaker.addEventListener('mouseenter', () => {
-      if (speaker.dataset.pos === 'center') stopAutoAdvance();
+    speaker.addEventListener('pointerenter', () => {
+      if (speaker.dataset.pos !== 'center') return;
+      hoveredSpeaker = speaker;
+      stopAutoAdvance();
     });
-    speaker.addEventListener('mouseleave', () => {
-      if (speaker.dataset.pos === 'center') startAutoAdvance();
+    speaker.addEventListener('pointerleave', () => {
+      if (hoveredSpeaker !== speaker) return;
+      hoveredSpeaker = null;
+      startAutoAdvance();
     });
   });
 

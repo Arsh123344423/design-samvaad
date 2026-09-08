@@ -1,0 +1,81 @@
+.agenda {
+  background: var(--cream);
+  color: var(--ink);
+  padding-block: var(--section-pad);
+  scroll-margin-top: var(--nav-h);
+}
+
+.agenda__tabs {
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.agenda__tablist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem;
+  margin-bottom: 1.5rem;
+  padding: .45rem;
+  background: var(--ink);
+  border-radius: var(--radius-md);
+}
+
+.agenda__tab {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .75rem;
+  min-width: 0;
+  padding: .9rem 1.1rem .8rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--cream);
+  font: 600 1rem var(--font-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.agenda__tab:hover,
+.agenda__tab:focus-visible { border-color: var(--red); }
+
+.agenda__tab.is-active {
+  background: var(--red);
+  color: var(--ink-bright);
+}
+
+.agenda__tab-name { overflow-wrap: anywhere; }
+.agenda__tab-code { font: 600 1.15rem var(--font-display); letter-spacing: .08em; }
+
+.agenda__panel[hidden] { display: none; }
+
+.agenda__list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--ink);
+}
+
+.agenda__item {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 22%) 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem .2rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--ink) 28%, transparent);
+}
+
+.agenda__item--break { background: color-mix(in oklab, var(--yellow) 24%, transparent); }
+.agenda__time { font: 600 1.25rem var(--font-display); letter-spacing: .02em; }
+.agenda__desc { margin: 0; font: 600 clamp(1.05rem, 2vw, 1.4rem) var(--font-text); }
+.agenda__speaker { margin: .28rem 0 0; color: color-mix(in oklab, var(--ink) 72%, transparent); font-size: .9rem; }
+.agenda__speaker span { margin-left: .45rem; color: color-mix(in oklab, var(--ink) 58%, transparent); }
+
+@media (max-width: 620px) {
+  .agenda__tab { display: block; padding-inline: .75rem; }
+  .agenda__tab-code { display: block; margin-top: .15rem; }
+  .agenda__item { grid-template-columns: 1fr; gap: .15rem; padding-block: .85rem; }
+  .agenda__speaker span { display: block; margin: .12rem 0 0; }
+}

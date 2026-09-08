@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/main.css?v=71" />
+<link rel="stylesheet" href="css/main.css?v=84" />
 </head>
 
 <body>
@@ -242,6 +242,7 @@
 
 
 <!-- ============ SPEAKERS ============ -->
+<!-- ============ SPEAKERS ============ -->
 <section class="speakers" id="speakers">
   <div class="wrap">
 
@@ -254,23 +255,35 @@
   <button class="speaker-nav speaker-nav--prev" type="button" aria-label="Previous speaker">‹</button>
 
   <ul class="speaker-grid" data-speaker-grid>
-    <li class="speaker" data-speaker>
-      <img class="speaker__poster" src="Speakers/Akansha%20Singh.png" alt="Akansha Singh" width="839" height="1200" loading="lazy" decoding="async" />
+    <li class="speaker" data-speaker >
+      <div class="speaker__photo" data-tint="blue"><img src="Speakers/Akansha%20Singh.jpg" alt="Akansha Singh" width="360" height="360" loading="lazy" decoding="async" /></div>
+      <p class="speaker__name">Akansha Singh</p>
+      <p class="speaker__role">Director, Expedia Group</p>
+    </li>
+    <li class="speaker" data-speaker >
+      <div class="speaker__photo" data-tint="yellow"><img src="Speakers/Ankur%20Sardana.jpg" alt="Ankur Sardana" width="360" height="360" loading="lazy" decoding="async" /></div>
+      <p class="speaker__name">Ankur Sardana</p>
+      <p class="speaker__role">Founder, Yes &amp; Play</p>
     </li>
     <li class="speaker" data-speaker>
-      <img class="speaker__poster" src="Speakers/Ankur%20Sardana.png" alt="Ankur Sardana" width="839" height="1200" loading="lazy" decoding="async" />
+      <div class="speaker__photo" data-tint="green"><img src="Speakers/Anmol%20Arora.jpg" alt="Anmol Arora" width="360" height="360" loading="lazy" decoding="async" /></div>
+      <p class="speaker__name">Anmol Arora</p>
+      <p class="speaker__role">Design Lead, District by Zomato</p>
+    </li>
+    <li class="speaker" data-speaker >
+      <div class="speaker__photo" data-tint="blue"><img src="Speakers/Varedh%20Nigam.jpg" alt="Varedh Nigam" width="360" height="360" loading="lazy" decoding="async" /></div>
+      <p class="speaker__name">Varedh Nigam</p>
+      <p class="speaker__role">Associate Design Director, Nagarro</p>
     </li>
     <li class="speaker" data-speaker>
-      <img class="speaker__poster" src="Speakers/Anmol%20Arora.png" alt="Anmol Arora" width="839" height="1200" loading="lazy" decoding="async" />
+      <div class="speaker__photo" data-tint="yellow"><img src="Speakers/Joy%20Banerjee.jpg" alt="Joy Banerjee" width="360" height="360" loading="lazy" decoding="async" /></div>
+      <p class="speaker__name">Joy Banerjee</p>
+      <p class="speaker__role">Vice President Design, Blinkit</p>
     </li>
     <li class="speaker" data-speaker>
-      <img class="speaker__poster" src="Speakers/Varedh%20Nigam.png" alt="Varedh Nigam" width="839" height="1200" loading="lazy" decoding="async" />
-    </li>
-    <li class="speaker" data-speaker>
-      <img class="speaker__poster" src="Speakers/Joy%20Banerjee.png" alt="Joy Banerjee" width="839" height="1200" loading="lazy" decoding="async" />
-    </li>
-    <li class="speaker" data-speaker>
-      <img class="speaker__poster" src="Speakers/Ashutosh%20Parihar.png" alt="Ashutosh Parihar" width="839" height="1200" loading="lazy" decoding="async" />
+      <div class="speaker__photo" data-tint="green"><img src="Speakers/Ashutosh%20Parihar.jpg" alt="Ashutosh Parihar" width="360" height="360" loading="lazy" decoding="async" /></div>
+      <p class="speaker__name">Ashutosh Parihar</p>
+      <p class="speaker__role">VP Design, ixigo</p>
     </li>
   </ul>
 
@@ -280,13 +293,71 @@
   </div>
 </section>
 
+
+<!-- Agenda -->
+ <section class="agenda" id="agenda">
+  <div class="wrap">
+
+    <div class="rule-head">
+      <span class="rule-head__label">What’s on the docket</span>
+      <span class="rule-head__index">04</span>
+    </div>
+    <span class="rule-dotted" aria-hidden="true"></span>
+
+    <div class="agenda__tabs" data-agenda-tabs>
+      <div class="agenda__tablist" role="tablist" aria-label="Event tracks">
+        <button class="agenda__tab is-active" id="main-track-tab" type="button" role="tab"
+                aria-selected="true" aria-controls="main-track-panel" tabindex="0">
+          <span class="agenda__tab-name">Main Track</span>
+          <span class="agenda__tab-code">MTV</span>
+        </button>
+        <button class="agenda__tab" id="workshop-track-tab" type="button" role="tab"
+                aria-selected="false" aria-controls="workshop-track-panel" tabindex="-1">
+          <span class="agenda__tab-name">Workshop Track</span>
+          <span class="agenda__tab-code">NYC</span>
+        </button>
+      </div>
+
+      <div class="agenda__panel" id="main-track-panel" role="tabpanel"
+           aria-labelledby="main-track-tab" tabindex="0">
+        <ul class="agenda__list">
+          <li class="agenda__item"><time class="agenda__time">09:30–10:45</time><div><h3 class="agenda__desc">Registrations</h3></div></li>
+          <li class="agenda__item"><time class="agenda__time">11:00–11:30</time><div><h3 class="agenda__desc">Opening Keynote</h3></div></li>
+          <li class="agenda__item"><time class="agenda__time">11:30–11:50</time><div><h3 class="agenda__desc">The Design of Abundance</h3><p class="agenda__speaker">Joy Banerjee <span>VP, Design</span></p></div></li>
+          <li class="agenda__item"><time class="agenda__time">11:55–12:15</time><div><h3 class="agenda__desc">The Irrational User</h3><p class="agenda__speaker">Ankur Sardana <span>Founder, Design Leader, Improv Pioneer</span></p></div></li>
+          <li class="agenda__item"><time class="agenda__time">12:20–12:40</time><div><h3 class="agenda__desc">How to Sell Design Without Selling Design</h3><p class="agenda__speaker">Varedh Nigam <span>Associate Director</span></p></div></li>
+          <li class="agenda__item"><time class="agenda__time">12:45–13:05</time><div><h3 class="agenda__desc">The Designer I’m Looking For</h3><p class="agenda__speaker">Akanksha Singh <span>Experience Design Director</span></p></div></li>
+          <li class="agenda__item agenda__item--break"><time class="agenda__time">13:05–14:00</time><div><h3 class="agenda__desc">Lunch</h3></div></li>
+          <li class="agenda__item"><time class="agenda__time">14:00–14:30</time><div><h3 class="agenda__desc">Activity</h3></div></li>
+          <li class="agenda__item"><time class="agenda__time">14:35–14:55</time><div><h3 class="agenda__desc">ixigo Next: The Experiential Redesign</h3><p class="agenda__speaker">Ashutosh Parihar <span>Vice President &amp; Head of Design, ixigo</span></p></div></li>
+          <li class="agenda__item"><time class="agenda__time">15:00–16:00</time><div><h3 class="agenda__desc">Design Panel with Aakash &amp; Akanksha</h3></div></li>
+          <li class="agenda__item"><time class="agenda__time">16:00–16:30</time><div><h3 class="agenda__desc">Ending Keynote</h3></div></li>
+          <li class="agenda__item"><time class="agenda__time">16:30–17:30</time><div><h3 class="agenda__desc">Tea &amp; Networking</h3></div></li>
+        </ul>
+      </div>
+
+      <div class="agenda__panel" id="workshop-track-panel" role="tabpanel"
+           aria-labelledby="workshop-track-tab" tabindex="0" hidden>
+        <ul class="agenda__list">
+          <li class="agenda__item"><time class="agenda__time">11:30–12:45</time><div><h3 class="agenda__desc">Designing with AI</h3><p class="agenda__speaker">Anmol Arora <span>Product Design Lead at District by Zomato</span></p></div></li>
+          <li class="agenda__item agenda__item--break"><time class="agenda__time">12:45–14:00</time><div><h3 class="agenda__desc">Lunch</h3></div></li>
+          <li class="agenda__item"><time class="agenda__time">14:00–14:15</time><div><h3 class="agenda__desc">Activity</h3></div></li>
+          <li class="agenda__item"><time class="agenda__time">14:15–15:00</time><div><h3 class="agenda__desc">Get Moving with Figma Motion</h3><p class="agenda__speaker">Tanmoy Saha <span>Design &amp; Art</span></p></div></li>
+          <li class="agenda__item"><time class="agenda__time">15:00–16:00</time><div><h3 class="agenda__desc">Workshop 3</h3></div></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</section>
 <!-- ============ GALLERY ============ -->
 <section class="gallery-section" id="gallery">
   <div class="wrap">
 
     <div class="rule-head">
       <span class="rule-head__label">What it looks like</span>
-      <span class="rule-head__index">04</span>
+      <span class="rule-head__index">05</span>
     </div>
     <span class="rule-dotted" aria-hidden="true"></span>
 
@@ -492,6 +563,6 @@
   </clipPath>
 </defs></svg>
 
-<script type="module" src="js/main.js?v=71"></script>
+<script type="module" src="js/main.js?v=83"></script>
 </body>
 </html>
