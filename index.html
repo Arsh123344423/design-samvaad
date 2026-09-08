@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/main.css?v=69" />
+<link rel="stylesheet" href="css/main.css?v=71" />
 </head>
 
 <body>
@@ -250,16 +250,32 @@
       <span class="rule-head__index">03</span>
     </div>
     <span class="rule-dotted" aria-hidden="true"></span>
+<div class="speaker-carousel" data-speaker-carousel>
+  <button class="speaker-nav speaker-nav--prev" type="button" aria-label="Previous speaker">‹</button>
 
-    <!-- Speaker posters hidden for now — announce soon instead. -->
-    <ul class="speaker-grid">
-      <li class="speaker speaker--soon">
-        <div class="speaker__plate">
-          <span class="speaker__soon-hi">वक्ता जल्द ही<br />घोषित होंगे</span>
-          <span class="speaker__soon-en">Speakers to be<br />announced soon</span>
-        </div>
-      </li>
-    </ul>
+  <ul class="speaker-grid" data-speaker-grid>
+    <li class="speaker" data-speaker>
+      <img class="speaker__poster" src="Speakers/Akansha%20Singh.png" alt="Akansha Singh" width="839" height="1200" loading="lazy" decoding="async" />
+    </li>
+    <li class="speaker" data-speaker>
+      <img class="speaker__poster" src="Speakers/Ankur%20Sardana.png" alt="Ankur Sardana" width="839" height="1200" loading="lazy" decoding="async" />
+    </li>
+    <li class="speaker" data-speaker>
+      <img class="speaker__poster" src="Speakers/shubhangi-gupta.jpg" alt="Joy Banerjee" width="839" height="1200" loading="lazy" decoding="async" />
+    </li>
+    <li class="speaker" data-speaker>
+      <img class="speaker__poster" src="Speakers/Varedh%20Nigam.png" alt="Varedh Nigam" width="839" height="1200" loading="lazy" decoding="async" />
+    </li>
+    <li class="speaker" data-speaker>
+      <img class="speaker__poster" src="Speakers/Joy%20Banerjee.png" alt="Shubhangi Gupta" width="839" height="1200" loading="lazy" decoding="async" />
+    </li>
+    <li class="speaker" data-speaker>
+      <img class="speaker__poster" src="Speakers/vanshita-singh.jpg" alt="Vanshita Singh" width="839" height="1200" loading="lazy" decoding="async" />
+    </li>
+  </ul>
+
+  <button class="speaker-nav speaker-nav--next" type="button" aria-label="Next speaker">›</button>
+</div>
 
   </div>
 </section>
@@ -476,6 +492,6 @@
   </clipPath>
 </defs></svg>
 
-<script type="module" src="js/main.js?v=69"></script>
+<script type="module" src="js/main.js?v=71"></script>
 </body>
 </html>
