@@ -9,6 +9,7 @@ import { initHorn }     from './modules/horn.js';
 import { initStickyNav } from './modules/sticky-nav.js';
 import { initLightbox }  from './modules/lightbox.js';
 import { initSpeakerCarousel } from './modules/speakers.js';
+import { initAgendaTabs } from './modules/agenda.js';
 
 initEntrance(document.body);
 
@@ -33,3 +34,4 @@ initLightbox({
 });
 
 initSpeakerCarousel(document.querySelector('[data-speaker-carousel]'));
+initAgendaTabs(document.querySelector('[data-agenda-tabs]'));
