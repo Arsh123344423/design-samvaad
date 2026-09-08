@@ -19,11 +19,7 @@
   top: 50%;
   left: 50%;
   width: clamp(11rem, 29%, 19rem);
-  padding: clamp(.45rem, 1vw, .8rem);
-  background: url("../../Assets/backdrop.jpg") center / cover;
-  border-radius: 1rem;
   overflow: hidden;
-  box-shadow: var(--shadow-poster);
   opacity: 0;
   pointer-events: none;
   transition: transform .6s var(--ease), opacity .6s var(--ease);
